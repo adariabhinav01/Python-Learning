@@ -1,0 +1,10 @@
+class Solution(object):
+    def isValid(self, s):
+        opcl = dict(('()', '[]', '{}'))
+        plist = []
+        for c in s:
+            if c in '([{':
+                plist.append(c)
+            elif len(plist) == 0 or c != opcl[plist.pop()]:
+                return False
+        return len(plist) == 0
